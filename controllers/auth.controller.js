@@ -50,8 +50,11 @@ export const login = async (req, res) => {
 };
 
 export const infoUser = async (req, res) => {
-    try {
-        const user = await User.findById(req.uid).lean();
+    try {        
+        const { id } = req.params;
+        console.log("si entró");
+        const user = await User.findOne(id);
+        console.log("si pasó: " + user);
         return res.json({ email: user.email, uid: user.id });
     } catch (error) {
         return res.status(500).json({ error: "error de server" });

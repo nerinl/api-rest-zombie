@@ -1,0 +1,45 @@
+import mongoose from "mongoose";
+const {Schema} = mongoose;
+
+const ArticulosXPersonaSchema = new Schema({
+    nombre: {
+        type: String,
+        required: true,
+        unique: true,
+        index: { unique: true },
+    },
+    edad: {
+        type: Number,
+        required: true,
+    },
+    sexo:{        
+        type: String,
+        required: true
+    },
+    latitud: {
+        type: Number,
+        required: true,
+    },
+    longitud: {
+        type: Number,
+        required: true,
+    },
+    infectado: {
+        type: Boolean,
+        required: true,
+    },
+    password:{
+        type: String,
+        required: true
+    },
+    admin:{
+        type: Boolean,
+        required: false
+    },
+    articulos: [{
+        type: Schema.Types.ObjectId, refs:'Articulos'
+    }]
+
+});
+
+export const Persona = mongoose.model("ArticulosXPersona", ArticulosXPersonaSchema);

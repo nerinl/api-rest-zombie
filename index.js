@@ -4,9 +4,10 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import cors from "cors";
 
-import authRouter from "./routes/auth.route.js";
-import linkRouter from "./routes/link.route.js";
+import personaRouter from "./routes/persona.route.js";
 import redirectRouter from "./routes/redirect.route.js";
+import tradeRouter from "./routes/trade.route.js";
+import informeRouter from "./routes/informes.route.js";
 
 const app = express();
 
@@ -33,8 +34,11 @@ app.use(cookieParser());
 // ejemplo back redirect (opcional)
 app.use("/", redirectRouter);
 
-app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/links", linkRouter);
+//app.use("/api/v1/auth", authRouter);
+//app.use("/api/v1/links", linkRouter);
+app.use("/api/v1/personas", personaRouter);
+app.use("/api/v1/trades", tradeRouter);
+app.use("/api/v1/informes", informeRouter);
 
 // solo para el ejemplo de login/token
 // app.use(express.static("public"));
